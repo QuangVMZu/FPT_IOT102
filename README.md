@@ -2,7 +2,7 @@
 
 ---
 
-🔰 INTRODUCTION
+### 🔰 INTRODUCTION
 Trong thời đại công nghệ số hiện nay, khái niệm "nhà thông minh" (Smart Home) không còn là một ý tưởng xa vời mà đang dần trở thành xu hướng phổ biến trên toàn cầu. Những ứng dụng như chiếu sáng tự động, giám sát an ninh từ xa, điều khiển thiết bị qua Internet đang thay đổi cách con người tương tác với không gian sống của mình. Trong số đó, hệ thống khóa cửa thông minh (Smart Door Lock) đóng vai trò đặc biệt quan trọng, là tuyến phòng thủ đầu tiên trong việc bảo vệ tài sản và đảm bảo quyền riêng tư của người sử dụng.
 
 Trên thực tế, các loại khóa cơ học truyền thống vốn tồn tại hàng trăm năm đang dần bộc lộ những hạn chế nghiêm trọng trước những thách thức an ninh hiện đại: chìa khóa dễ sao chép, khóa dễ bị phá hoặc mở bằng kỹ thuật cao, không thể kiểm soát truy cập linh hoạt, và không hỗ trợ điều khiển từ xa. Điều này đặt ra yêu cầu cấp thiết về việc phát triển một hệ thống khóa tiên tiến hơn, có khả năng nhận diện người dùng, lưu vết truy cập, đồng thời cung cấp khả năng giám sát và điều khiển từ xa.
