@@ -140,4 +140,5 @@ Với Arduino Uno làm trung tâm điều khiển, hệ thống được lập t
 Bên cạnh tính thực tiễn, dự án còn mang ý nghĩa lớn về mặt giáo dục, là nền tảng lý tưởng để sinh viên và người học tìm hiểu về lập trình vi điều khiển, giao tiếp thiết bị ngoại vi (SPI, I2C, UART), xử lý tín hiệu số, và phát triển hệ thống nhúng tích hợp. Thiết kế mô-đun của hệ thống cũng giúp dễ dàng nâng cấp hoặc tùy biến theo nhu cầu – như thêm cảm biến vân tay, camera nhận diện khuôn mặt, hay thậm chí chuyển sang điều khiển hoàn toàn qua mạng Internet.
 
 Tóm lại, hệ thống Smart Door Lock không chỉ là một giải pháp an ninh hiện đại cho nhà ở và văn phòng mà còn là một nền tảng mở cho việc học tập, nghiên cứu và phát triển sản phẩm thực tế trong lĩnh vực Điện – Điện tử – IoT. Với tính năng bảo mật cao, khả năng mở rộng linh hoạt và chi phí triển khai thấp, hệ thống này có tiềm năng ứng dụng rộng rãi trong các mô hình nhà thông minh, phòng thí nghiệm, kho lưu trữ hoặc cơ sở giáo dục hiện đại.
+
 ---
