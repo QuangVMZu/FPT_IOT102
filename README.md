@@ -2,6 +2,17 @@
 
 ---
 
+🔰 INTRODUCTION
+Trong thời đại công nghệ số hiện nay, khái niệm "nhà thông minh" (Smart Home) không còn là một ý tưởng xa vời mà đang dần trở thành xu hướng phổ biến trên toàn cầu. Những ứng dụng như chiếu sáng tự động, giám sát an ninh từ xa, điều khiển thiết bị qua Internet đang thay đổi cách con người tương tác với không gian sống của mình. Trong số đó, hệ thống khóa cửa thông minh (Smart Door Lock) đóng vai trò đặc biệt quan trọng, là tuyến phòng thủ đầu tiên trong việc bảo vệ tài sản và đảm bảo quyền riêng tư của người sử dụng.
+
+Trên thực tế, các loại khóa cơ học truyền thống vốn tồn tại hàng trăm năm đang dần bộc lộ những hạn chế nghiêm trọng trước những thách thức an ninh hiện đại: chìa khóa dễ sao chép, khóa dễ bị phá hoặc mở bằng kỹ thuật cao, không thể kiểm soát truy cập linh hoạt, và không hỗ trợ điều khiển từ xa. Điều này đặt ra yêu cầu cấp thiết về việc phát triển một hệ thống khóa tiên tiến hơn, có khả năng nhận diện người dùng, lưu vết truy cập, đồng thời cung cấp khả năng giám sát và điều khiển từ xa.
+
+Dự án Smart Door Lock ra đời nhằm đáp ứng nhu cầu này bằng cách tích hợp các công nghệ tiên tiến như vi điều khiển Arduino, xác thực bằng mã PIN, nhận diện thẻ RFID, Bluetooth, và cảm biến siêu âm phát hiện người dùng. Hệ thống không chỉ đảm bảo yếu tố bảo mật, mà còn đề cao tính tiện lợi, khả năng mở rộng và tương tác thời gian thực, hướng đến một giải pháp phù hợp cho nhà ở, văn phòng, phòng lab và các mô hình cần kiểm soát truy cập.
+
+Thông qua dự án này, nhóm nghiên cứu không chỉ xây dựng một giải pháp an ninh hữu ích, mà còn tạo ra một mô hình học tập và nghiên cứu thực tiễn trong lĩnh vực Điện tử, Vi điều khiển và IoT, mở ra nhiều cơ hội phát triển trong các dự án tương lai.
+
+---
+
 ### 1. Bối cảnh và lý do chọn đề tài
 
 Trong những năm gần đây, cùng với tốc độ đô thị hóa và sự phát triển nhanh chóng của công nghệ IoT, nhu cầu đảm bảo an ninh cá nhân và tài sản ngày càng trở nên cấp thiết. Các phương pháp khóa cửa truyền thống—dù đã tồn tại hàng trăm năm—đang dần bộc lộ nhiều nhược điểm trong thế giới hiện đại. Cụ thể:
@@ -119,4 +130,14 @@ Hệ thống **Smart Door Lock** phù hợp với nhiều môi trường khác n
 * 🧪 **Phòng lab/phòng thiết bị**: giới hạn quyền truy cập với người dùng được phân quyền.
 * 🏬 **Kho hàng nhỏ**: tích hợp kiểm soát ra vào và log lịch sử để truy xuất khi cần thiết.
 
+---
+
+### 9. Kết luận
+Dự án Smart Door Lock là một minh chứng rõ ràng cho việc áp dụng hiệu quả các công nghệ nhúng và IoT vào trong đời sống thực tế nhằm nâng cao mức độ an toàn và tiện nghi cho người sử dụng. Hệ thống đã được xây dựng với triết lý thiết kế "đa lớp bảo mật", tích hợp nhiều phương thức xác thực độc lập như mã PIN, thẻ từ RFID và điều khiển từ xa qua Bluetooth, đồng thời ứng dụng cảm biến siêu âm để tối ưu hóa hiệu suất năng lượng.
+
+Với Arduino Uno làm trung tâm điều khiển, hệ thống được lập trình linh hoạt, hỗ trợ lưu trữ dữ liệu người dùng và thực hiện các quyết định điều khiển theo thời gian thực. Cơ chế mở khóa bằng relay kết hợp với khóa từ đảm bảo độ tin cậy cao trong vận hành. Thông qua màn hình LCD, người dùng nhận được phản hồi rõ ràng, đồng thời hệ thống hỗ trợ cập nhật và giám sát từ xa qua điện thoại thông minh, mở ra khả năng tích hợp với các nền tảng IoT như ThingSpeak, Firebase hay các hệ sinh thái nhà thông minh.
+
+Bên cạnh tính thực tiễn, dự án còn mang ý nghĩa lớn về mặt giáo dục, là nền tảng lý tưởng để sinh viên và người học tìm hiểu về lập trình vi điều khiển, giao tiếp thiết bị ngoại vi (SPI, I2C, UART), xử lý tín hiệu số, và phát triển hệ thống nhúng tích hợp. Thiết kế mô-đun của hệ thống cũng giúp dễ dàng nâng cấp hoặc tùy biến theo nhu cầu – như thêm cảm biến vân tay, camera nhận diện khuôn mặt, hay thậm chí chuyển sang điều khiển hoàn toàn qua mạng Internet.
+
+Tóm lại, hệ thống Smart Door Lock không chỉ là một giải pháp an ninh hiện đại cho nhà ở và văn phòng mà còn là một nền tảng mở cho việc học tập, nghiên cứu và phát triển sản phẩm thực tế trong lĩnh vực Điện – Điện tử – IoT. Với tính năng bảo mật cao, khả năng mở rộng linh hoạt và chi phí triển khai thấp, hệ thống này có tiềm năng ứng dụng rộng rãi trong các mô hình nhà thông minh, phòng thí nghiệm, kho lưu trữ hoặc cơ sở giáo dục hiện đại.
 ---
