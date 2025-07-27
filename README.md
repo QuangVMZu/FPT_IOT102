@@ -1,66 +1,96 @@
-## 🔐 **Giới thiệu Hệ thống Smart Door Lock**
+## 🔐 GIỚI THIỆU DỰ ÁN SMART DOOR LOCK
 
-### 1. Mục tiêu hệ thống
+### 1. Bối cảnh và lý do chọn đề tài
 
-Hệ thống **Smart Door Lock** được phát triển nhằm tăng cường mức độ bảo mật và tiện ích cho người dùng trong việc quản lý quyền ra vào tại nhà riêng, văn phòng hoặc các khu vực hạn chế truy cập. Khác với các loại khóa truyền thống dễ bị sao chép chìa hoặc bị phá, hệ thống này ứng dụng công nghệ điều khiển tự động và xác thực điện tử để đảm bảo chỉ những người được ủy quyền mới có thể mở cửa. Đồng thời, hệ thống hỗ trợ điều khiển từ xa và phản hồi theo thời gian thực, phù hợp với xu hướng **Internet of Things (IoT)**.
+Trong kỷ nguyên của đô thị hóa nhanh và sự phát triển mạnh mẽ của công nghệ số, nhu cầu về các giải pháp an ninh hiện đại – đặc biệt là trong lĩnh vực kiểm soát truy cập – ngày càng gia tăng. Hệ thống khóa cơ truyền thống ngày nay đang bộc lộ nhiều điểm yếu như:
 
----
+* Dễ bị sao chép chìa khóa,
+* Dễ bị phá khóa thủ công (lock picking, phá bằng lực),
+* Không hỗ trợ kiểm soát truy cập linh hoạt (ví dụ: không thể chia sẻ quyền mở cửa tạm thời).
 
-### 2. Nền tảng phần cứng
-
-Hệ thống được xây dựng dựa trên nền tảng **Arduino Uno R3**, đóng vai trò là bộ điều khiển trung tâm, điều phối hoạt động của các thiết bị ngoại vi thông qua các chân digital, analog, và giao tiếp I2C/SPI. Các thành phần phần cứng chính bao gồm:
-
-* 📶 **RFID RC522**: Là module đọc thẻ từ hoạt động ở tần số 13.56 MHz. Thiết bị cho phép xác thực người dùng bằng cách quét thẻ RFID được cấp sẵn. Việc sử dụng giao tiếp SPI với Arduino giúp truyền dữ liệu nhanh và ổn định.
-
-* 🔢 **Keypad 4x4 Matrix**: Dùng để nhập mã PIN thay thế hoặc bổ sung cho thẻ RFID. Mỗi phím được đọc qua ma trận hàng-cột, cho phép tiết kiệm chân I/O.
-
-* 📲 **HC-06 Bluetooth Module**: Cho phép người dùng điều khiển hệ thống qua ứng dụng Android. Module này hỗ trợ giao tiếp UART (9600 baud mặc định), giúp truyền lệnh mở khóa hoặc kiểm tra trạng thái từ xa.
-
-* 🧠 **HC-SR04**: Cảm biến siêu âm giúp phát hiện sự hiện diện trước cửa bằng cách đo khoảng cách. Khi có người đến gần trong phạm vi cấu hình (ví dụ: < 80 cm), hệ thống sẽ tự động kích hoạt màn hình và các chế độ chờ nhập mã hoặc quét thẻ.
-
-* 📺 **OLED SSD1306 0.96”**: Hiển thị trạng thái hệ thống (chào mừng, đúng mã, sai mã, mở khóa thành công...) và hướng dẫn người dùng thao tác.
-
-* 🔧 **Servo SG90**: Điều khiển cơ cấu khóa cửa vật lý (như lẫy chốt) bằng cách xoay một góc nhất định khi có lệnh mở khóa.
-
-* 💡 **LED đỏ/xanh**: Cảnh báo trạng thái truy cập – xanh cho phép, đỏ từ chối.
-
-* ⚡ **Relay module**: Dùng để điều khiển các thiết bị điện bổ trợ (nếu có), ví dụ đèn chiếu sáng hoặc còi báo động.
-
-* 🔋 **Nguồn điện**: Hệ thống sử dụng 3 viên pin **18650 3.7V** mắc nối tiếp, cho tổng điện áp khoảng 12.6V. Một mạch giảm áp Buck Converter (ví dụ: LM2596) được dùng để hạ áp xuống 5V và 3.3V tùy theo yêu cầu của từng module (ví dụ RFID cần 3.3V, servo cần 5V).
+Với sự phổ biến của **Internet of Things (IoT)**, các hệ thống **Smart Lock** ra đời nhằm thay thế khóa truyền thống bằng các phương pháp xác thực điện tử, cho phép điều khiển và giám sát từ xa thông qua các thiết bị thông minh. Xuất phát từ thực tiễn đó, nhóm thực hiện đề tài "Smart Door Lock" – một hệ thống khóa thông minh tích hợp đa phương thức xác thực và có thể mở rộng thành một phần của hệ sinh thái nhà thông minh.
 
 ---
 
-### 3. Tính năng chính
+### 2. Mục tiêu của dự án
 
-* ✅ **Xác thực đa phương thức**: Người dùng có thể lựa chọn sử dụng thẻ từ RFID, mã PIN hoặc ứng dụng Bluetooth để mở khóa. Tất cả phương thức đều được xử lý bảo mật, tránh khả năng truy cập trái phép.
+Dự án hướng đến việc thiết kế và triển khai **một hệ thống khóa cửa thông minh**, tích hợp các công nghệ điện tử và truyền thông hiện đại, với các mục tiêu cụ thể:
 
-* 🔐 **Cơ chế điều khiển khóa thông minh**: Khi xác thực thành công, động cơ servo SG90 sẽ quay một góc cố định (thường 90°) để kéo chốt cửa, sau đó tự động khóa lại sau thời gian nhất định.
-
-* 🧠 **Tự kích hoạt khi phát hiện người**: Nhờ cảm biến siêu âm HC-SR04, hệ thống có thể tiết kiệm năng lượng bằng cách chỉ bật màn hình và đèn LED khi có người lại gần.
-
-* 🖥️ **Giao tiếp người dùng rõ ràng**: Tất cả thông tin phản hồi đều hiển thị trên màn hình OLED và đèn LED, giúp người dùng dễ dàng nhận biết tình trạng hệ thống.
-
-* 📲 **Điều khiển từ xa qua Bluetooth**: Ứng dụng di động có thể kết nối với hệ thống để gửi lệnh mở khóa, xem nhật ký truy cập hoặc thực hiện cấu hình ban đầu.
+* ✅ **Tăng cường bảo mật**: sử dụng xác thực đa lớp (mã PIN, RFID, Bluetooth).
+* ✅ **Tối ưu trải nghiệm người dùng**: cung cấp phản hồi thời gian thực, dễ sử dụng ngay cả với người không chuyên.
+* ✅ **Hỗ trợ giám sát và điều khiển từ xa**: thông qua Bluetooth hoặc kết nối Wi-Fi với nền tảng IoT (ThingSpeak).
+* ✅ **Tiết kiệm năng lượng và dễ bảo trì**: kích hoạt theo sự hiện diện và thiết kế mô-đun linh kiện.
 
 ---
 
-### 4. Ưu điểm hệ thống
+### 3. Thành phần phần cứng chính
 
-* 🛡️ **Bảo mật cao** nhờ sự kết hợp của nhiều hình thức xác thực và giới hạn số lần nhập sai.
-
-* 🔧 **Dễ lắp đặt và tùy chỉnh**, sử dụng các linh kiện phổ biến và mã nguồn mở Arduino IDE.
-
-* 🔋 **Tiết kiệm năng lượng** nhờ chế độ ngủ, chỉ kích hoạt khi có người đến gần.
-
-* 📦 **Khả năng mở rộng cao**, có thể tích hợp thêm WiFi, camera hoặc kết nối với hệ thống quản lý thông minh.
+| Thành phần                    | Chức năng                                                              |
+| ----------------------------- | ---------------------------------------------------------------------- |
+| **Arduino Uno**               | Bộ xử lý trung tâm, xử lý tín hiệu vào/ra và thực hiện logic xác thực. |
+| **HC-SR04**                   | Cảm biến siêu âm phát hiện người đến gần, kích hoạt hệ thống.          |
+| **Keypad 4x4**                | Nhập mã PIN để xác thực.                                               |
+| **RC522 RFID**                | Quét thẻ từ chuẩn MIFARE để nhận dạng người dùng.                      |
+| **HC-05**                     | Mô-đun Bluetooth, điều khiển hệ thống từ điện thoại.                   |
+| **Relay Module**              | Kích hoạt hoặc ngắt dòng điện đến **khóa từ** sau khi xác thực.        |
+| **Khóa từ**                   | Cố định cửa bằng lực điện từ, tự động mở khi có tín hiệu hợp lệ.       |
+| **NodeMCU ESP8266** (mở rộng) | Kết nối Wi-Fi, gửi dữ liệu truy cập lên nền tảng đám mây ThingSpeak.   |
+| **LCD I2C 16x2**              | Hiển thị trạng thái hệ thống, hướng dẫn người dùng.                    |
+| **EEPROM**                    | Lưu trữ mã PIN và UID thẻ RFID.                                        |
 
 ---
 
-### 5. Ứng dụng thực tiễn
+### 4. Cấu trúc hoạt động
 
-* 🏠 **Nhà ở thông minh**: Đảm bảo an ninh và tiện lợi cho hộ gia đình.
-* 🏢 **Văn phòng làm việc**: Quản lý quyền truy cập cho nhân viên.
-* 🧪 **Phòng thiết bị/lab**: Kiểm soát nghiêm ngặt thiết bị và tài liệu chuyên dụng.
-* 📦 **Kho hàng/nhà xưởng nhỏ**: Ngăn chặn truy cập trái phép và hỗ trợ giám sát từ xa.
+Hệ thống được chia thành 4 khối chính:
+
+* 🔹 **Khối đầu vào**: bao gồm cảm biến siêu âm, bàn phím và đầu đọc RFID. Cảm biến sẽ kích hoạt hệ thống khi phát hiện người dùng đến gần. Sau đó, người dùng có thể xác thực bằng mã PIN hoặc quét thẻ từ.
+
+* 🔹 **Khối xử lý**: Arduino sẽ so sánh dữ liệu đầu vào với các mã được lưu trong EEPROM. Nếu trùng khớp, sẽ thực hiện mở khóa.
+
+* 🔹 **Khối đầu ra**: bao gồm relay và khóa từ. Khi xác thực thành công, relay sẽ dẫn dòng cho khóa từ hoạt động trong một khoảng thời gian ngắn (\~5s), sau đó tự động khóa lại.
+
+* 🔹 **Khối giao tiếp**: HC-05 hỗ trợ điều khiển qua điện thoại bằng lệnh như “OPEN”, “ADDRFID”. NodeMCU ESP8266 giúp gửi dữ liệu truy cập lên cloud ThingSpeak (mở rộng).
+
+---
+
+### 5. Các phương thức xác thực được hỗ trợ
+
+* 🔐 **Mã PIN**: nhập qua bàn phím 4x4, độ dài tối đa 6 chữ số.
+* 🔐 **Thẻ RFID**: chuẩn MIFARE, UID được so sánh với danh sách trong EEPROM.
+* 📲 **Bluetooth**: gửi lệnh từ điện thoại như "OPEN" để mở khóa.
+* 👁 **Phát hiện người đến gần**: cảm biến siêu âm giúp bật hệ thống khi có người lại gần, tiết kiệm năng lượng.
+
+---
+
+### 6. Ưu điểm nổi bật của hệ thống
+
+* 💡 **Xác thực đa lớp (Multi-Factor)**: tăng mức độ bảo mật.
+* 🧩 **Thiết kế mô-đun**: dễ bảo trì, dễ mở rộng với cảm biến vân tay, camera, Wi-Fi...
+* 🔋 **Tiết kiệm năng lượng**: các thành phần như Bluetooth và màn hình chỉ kích hoạt khi cần thiết.
+* 📶 **Giám sát thời gian thực**: có thể gửi log truy cập lên cloud (ThingSpeak).
+* 📱 **Giao diện người dùng thân thiện**: hiển thị hướng dẫn và trạng thái rõ ràng.
+
+---
+
+### 7. Khả năng mở rộng trong tương lai
+
+Hệ thống có kiến trúc mở, cho phép tích hợp thêm các tính năng cao cấp như:
+
+* 📷 Nhận diện khuôn mặt bằng camera module.
+* 🔑 Cảm biến vân tay cho xác thực sinh trắc học.
+* ☁️ Lưu trữ nhật ký truy cập trên Firebase, Blynk hoặc nền tảng IoT khác.
+* 📲 Tích hợp app mobile với giao diện người dùng.
+
+---
+
+### 8. Tính ứng dụng thực tiễn
+
+Hệ thống phù hợp với các môi trường sau:
+
+* 🏠 Nhà ở cá nhân, chung cư.
+* 🏢 Văn phòng làm việc, công ty nhỏ.
+* 🧪 Phòng lab, phòng thiết bị.
+* 🚪 Nhà kho, phòng lưu trữ cần kiểm soát truy cập.
 
 ---
